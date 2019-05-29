@@ -148,7 +148,7 @@ export default class Login extends Component {
                         </View>
                     </ScrollView>
                 </View>
-                <View style={styles.notice}>
+                <View style={styles.noticeWrapper}>
                     <Notice
                         showNotice={showNotice}
                         type="Error"

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
     },
-    notice:{
+    noticeWrapper:{
         position: 'absolute',
         left: 0,
         right: 0,
