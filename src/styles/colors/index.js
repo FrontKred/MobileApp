@@ -1,0 +1,17 @@
+export default {
+    BLACK:'#000',
+    WHITE:'#fff',
+    LIGHT_GRAY:'#929292',
+    SAFRON:'#E9CE2C',
+    YELLOW:'#ffc40e',
+    TEAL_BLUE:'#337CA0',
+    RICH_BLACK:'#022F40',
+    MAXIMUM_BLUE:'#38AECC',
+    COQUELICOT:'#E13700',
+    BURGUNDY:'#6D021D',
+    GARGOYLE_GAS:"#FFDD47",
+    LIGHT_PASTEL_PURPLE:'#B298DC',
+    LIGHT_CORNFLOWER_BLUE:'#91C4F2',
+    DIAMOND:'#B9FAF8',
+    TRANSPARENT:'transparent'
+}
