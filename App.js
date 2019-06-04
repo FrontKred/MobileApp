@@ -1,13 +1,14 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React,{Component} from 'react';
+import {Provider} from 'react-redux';
 import Login from "./src/screens/Login";
-import ForgotPassword from "./src/screens/ForgotPassword";
+import {Root,storeFactory} from './src/navigators/AppNavigator';
 
-export default class App extends React.Component {
+export default class App extends Component {
     render() {
         return (
-           <ForgotPassword/>
-
+            <Provider store={storeFactory()}>
+                <Root/>
+            </Provider>
         );
     }
 }

@@ -12,8 +12,14 @@ import Notice from '../components/Notice';
 import Loader from '../components/Loader';
 import ButtonType01 from '../components/buttons/ButtonType01';
 import propTypes from 'prop-types';
+import {headerStyleTransparent} from "../styles/navigation";
 
 export default class ForgotPassword extends Component{
+    static navigationOptions=({navigation})=>({
+        headerStyle:headerStyleTransparent,
+        headerTintColor:colors.BLACK,
+        headerTransparent: true,
+    });
     constructor(props){
         super(props);
         this.state={

@@ -8,6 +8,7 @@ import colors from '../../styles/colors';
 import {Button} from 'react-native-elements';
 
 
+
 const ButtonType01 = ({icon, styleTitle, buttonStyle, type, title, handleOnPress, validForm}) => {
     const opacity = !validForm ? 1 : 0.8;
     const titleStyle = (styleTitle) ? {...styleTitle, textTransform: 'uppercase'} : {

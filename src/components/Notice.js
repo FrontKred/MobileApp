@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         padding: 10,
+        zIndex:200,
         height: 60,
         backgroundColor: colors.WHITE,
     },

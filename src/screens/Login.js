@@ -4,10 +4,17 @@ import {
     View,
     ScrollView,
     KeyboardAvoidingView,
-    Image
+    Image,
+    Button
 } from 'react-native';
+
+import {headerStyleTransparent} from "../styles/navigation";
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux'
+import ActionCreators from "../redux/actions";
 import colors from '../styles/colors';
 import ButtonType01 from '../components/buttons/ButtonType01';
+import NavBarButton from "../components/buttons/NavBarButton";
 import InputField from '../components/form/InputField';
 import styles from './styles/LogIn';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,30 +22,44 @@ import Notice from '../components/Notice';
 import Loader from '../components/Loader';
 
 
-export default class Login extends Component {
+
+class Login extends Component {
+    static navigationOptions=({navigation})=>({
+        headerStyle:headerStyleTransparent,
+        headerTintColor:colors.BLACK,
+        headerTransparent: true,
+        headerRight:
+            <NavBarButton
+            title="Восстановить пароль"
+            float="right"
+            color={colors.TEAL_BLUE}
+            handleButtonPress={()=>navigation.navigate('ForgotPassword')}
+        />,
+    });
+
     constructor(props) {
         super(props);
         this.state = {
             formValid: true,
             validEmail: false,
             email: '',
+            password:'',
             validPassword: false,
             loaderVisible: false
         };
     }
 
     onLoginPress() {
+        const {logIn}=this.props.actions;
         this.setState({loaderVisible: true});
-
         setTimeout(() => {
 
             if (!this.state.validEmail || !this.state.validPassword) {
                 this.setState({formValid: false, loaderVisible: false})
             } else {
-                this.setState({formValid: true, loaderVisible: false},()=>{
-                    alert('Success');
+                this.setState({formValid: true, loaderVisible: false}, () => {
+                  logIn(this.state.email,this.state.password);
                 });
-
             }
 
         }, 2000);
@@ -63,7 +84,6 @@ export default class Login extends Component {
             }
         } else {
             if (!emailCheckRegex.test(email)) {
-                alert('не прошел');
                 this.setState({
                     validEmail: false
                 })
@@ -74,6 +94,7 @@ export default class Login extends Component {
 
     handlePasswordChange(password) {
         const {validPassword} = this.state;
+        this.setState({password});
         if (!validPassword) {
             if (password.length >= 5) {
                 this.setState({validPassword: true})
@@ -91,7 +112,7 @@ export default class Login extends Component {
     }
 
     render() {
-        const {formValid, loaderVisible,validEmail,validPassword} = this.state;
+        const {formValid, loaderVisible, validEmail, validPassword} = this.state;
         const showNotice = !formValid;
         const background = formValid ? colors.GARGOYLE_GAS : colors.LIGHT_GRAY;
         return (
@@ -167,3 +188,12 @@ export default class Login extends Component {
     }
 }
 
+
+export default connect(
+    (state) => ({
+        loggedInState:state.loggedInStatus
+    }),
+    (dispatch) => ({
+        actions:bindActionCreators(ActionCreators,dispatch)
+    }))
+(Login);
