@@ -2,7 +2,7 @@ import * as C from "../constants";
 import createReducer from '../helpers/createReducer';
 import AppRouteConfigs from "../../navigators/AppRouteConfigs";
 
-const actionsOne = AppRouteConfigs.router.getActionForPathAndParams('Login');
+const actionsOne = AppRouteConfigs.router.getActionForPathAndParams('MainScreen');
 const initialNavState = AppRouteConfigs.router.getStateForAction(actionsOne);
 
 const loggedInStatus = createReducer({}, {

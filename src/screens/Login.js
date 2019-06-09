@@ -52,13 +52,14 @@ class Login extends Component {
     onLoginPress() {
         const {logIn}=this.props.actions;
         this.setState({loaderVisible: true});
+        const {navigate}=this.props.navigation;
         setTimeout(() => {
-
             if (!this.state.validEmail || !this.state.validPassword) {
                 this.setState({formValid: false, loaderVisible: false})
             } else {
                 this.setState({formValid: true, loaderVisible: false}, () => {
                   logIn(this.state.email,this.state.password);
+                  navigate('MainScreen')
                 });
             }
 
